@@ -1,0 +1,38 @@
+<%= form_with(model: group) do |form| %>
+  <% if group.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+      <ul>
+        <% group.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nombre, style: "display: block", class: "form-label text-light"  %>
+    <%= form.text_field :nombre, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :integrantes, style: "display: block", class: "form-label text-light"  %>
+    <%= form.number_field :integrantes, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :fecha_debut, style: "display: block", class: "form-label text-light"  %>
+    <%= form.date_field :fecha_debut, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :tipo_grupo, style: "display: block", class: "form-label text-light"  %>
+    <%# <%= form.number_field :tipo_grupo %> 
+    <%= form.select(:tipo_grupo, Group.tipo_grupos.keys.map { |g| [g.humanize, g] }, {}, {class:"form-select"}) %>
+  </div>
+
+  <div>
+    <%= form.submit nil, class: "btn btn-secondary mt-5" %>
+  </div>
+<% end %>

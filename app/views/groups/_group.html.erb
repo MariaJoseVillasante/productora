@@ -1,0 +1,23 @@
+<div id="<%= dom_id group %>">
+  <h1 class="d-flex justify-content-evenly text-light">Grupo</h1>
+    <div class="container mt-5 d-flex justify-content-evenly">
+        <div class="card tabla" style="width: 25rem;"> 
+            <div class="card-body">
+            <h5 class="card-title">Nombre: <%= group.nombre %></h5>           
+            <p class="card-text">Integrantes: <%= group.integrantes %></p>
+            <p class="card-text">Fecha debut: <%= group.fecha_debut %></p>
+            <p class="card-text">Tipo grupo: <%= group.tipo_grupo %></p>
+            <p class="card-text">Cantidad de conciertos: <%= group.conciertos_este_mes %></p>
+            <p class="card-text">Concierto último mes: <%= group.concerts.count%></p>
+            <div class="d-flex justify-content-evenly">
+                <%= link_to 'Lista', groups_path, class:"btn btn-secondary" %>
+                <%= link_to "Editar", edit_group_path(group), class:"btn btn-secondary"%>
+                <%= link_to 'Nuevo', new_group_path, class:"btn btn-secondary" %>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+   
+

@@ -1,0 +1,12 @@
+<div class="tabla col-6 text-center content-center">
+  <h1>Editing Concert</h1>
+  <div class="col-11">
+    <%= render "form", concert: @concert %>
+  </div>
+</div>
+<div>
+  <%= link_to "Show this concert", @concert, class: "btn btn-secondary mt-5"  %> 
+  <%= link_to "Back to concerts", concerts_path, class: "btn btn-secondary mt-5"  %>
+  <%= button_to "Eliminar", @concert, method: :delete, data: {confirm: "Seguro?"}, class:"btn btn-danger" %>
+
+</div>

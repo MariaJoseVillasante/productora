@@ -1,0 +1,47 @@
+<p style="color: green"><%= notice %></p>
+<h1 class="text-light">Concerts</h1>
+<div id="concerts">
+  <%# <% @concerts.each do |concert| %> 
+    <%# <%= render concert %>   
+  <%# <% end %> 
+    <div class="col-md-6 offset-md-6">
+    <%= render 'concerts/filter_form' %>  
+    </div> 
+<table class="table table-bordered tabla">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Asistentes</th>
+            <th>Lugar:</th>
+            <th>Duracion:</th>
+            <th>Group:</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @concerts.each do |concert| %>
+            <tr>
+                <td><%= concert.fecha %></td>
+                <td><%= concert.asistentes %></td>
+                <td><%= concert.lugar %></td>
+                <td><%= concert.duracion %></td>
+                <td><%= concert.group_id %></td>
+                <td class="d-flex justify-content-evenly">
+                    <%= link_to concert, class:"btn btn-secondary" do%>Ver <%end%>
+                    <%# <%= link_to "Ver", concert_path(concert), class:"btn btn-secondary"%> 
+                    <%= link_to "Editar", edit_concert_path(concert), class:"btn btn-secondary"%>
+                    <%= button_to "Eliminar", concert, method: :delete, data: {confirm: "Seguro?"}, class:"btn btn-danger" %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<div class="d-flex justify-content-end">  
+<%= paginate @concerts %> 
+<%# <%= paginate @books, theme: 'bootstrap-5' %> 
+</div>
+<%= link_to "Nuevo", new_concert_path, class: "btn btn-secondary" %>
+<br>
+<%= link_to 'Volver', :back, class:"" %>
+</div>
+

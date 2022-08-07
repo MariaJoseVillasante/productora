@@ -1,0 +1,18 @@
+<%= search_form_for @q, class:"d-flex mb-3" do |f| %>  
+<%# <%= f.select :tipo_grupo_eq, options_for_select(Group.tipo_grupos, @q.tipo_grupo), {include_blank: "Ver todos"}, {class:"form-control me-2"} %> 
+<%# <%= form.select(:tipo_grupo, Group.tipo_grupos.keys.map { |b| [b.humanize, b] }, {}, {class:"form-select"}) %> 
+<%# # Search if the name field contains... %>
+  <%# <%= f.label :Lugar %> 
+  <%= f.search_field :lugar_cont, class: 'form-control', placeholder: '¿Que lugar buscas?'  %>   
+  <%# <%= f.label :name_cont %>  
+  <%# <%= f.search_field :name_cont %>  
+<%# # Search if an associated articles.title starts with... %>
+  <%# <%= f.label :articles_title_start %> 
+  <%# <%= f.search_field :articles_title_start %> 
+<%# # Attributes may be chained. Search multiple attributes for one value... %>
+  <%# <%= f.label :nombre_or_description_or_email_or_articles_title_cont %> 
+  <%# <%= f.search_field :name_or_description_or_email_or_articles_title_cont %> 
+<%# <%= sort_link(@q, :name) %> 
+<%= f.submit "Buscar Lugar", class:"btn btn-outline-secondary" %> 
+<%# <%= f.submit %> 
+<% end %>

@@ -1,0 +1,15 @@
+<div class="container mt-3 row">
+    <div class="col-lg-6 col-md-6 col-sm-12">   
+<%# <%= image_tag "pexels-guilherme-rossi-1705073", width:"80%", class:"shadow rounded"%> 
+<%= image_tag "https://images.pexels.com/photos/1692695/pexels-photo-1692695.jpeg?auto=compress&cs=tinysrgb&w=800", width:"90%", class:"shadow rounded"%> 
+        <%# si viene de public carpeta images %>
+        <%# <image src="/images/nombre.jpeg"> %>
+        <%# <image src="https://www.pexels.com/es-es/foto/mujer-en-la-ciudad-de-visualizacion-de-plataforma-de-roca-196667/"> %>
+    </div>    
+    <div class="col-lg-6 col-md-6 col-sm-12">
+        <h1 class="d-flex justify-content-evenly m-5 text-light">PROD: Productora de Eventos</h1>
+        <%# <p class="m-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, beatae! Obcaecati placeat soluta, quam perspiciatis doloribus, eos ad qui maiores saepe iusto fugiat similique ipsam facilis commodi sunt dignissimos corporis!</p> %>
+        <%= link_to "Grupos", groups_path, class: "btn btn-secondary m-4" %>
+        <%= link_to "Conciertos", concerts_path, class: "btn btn-secondary m-4" %>                            
+    </div>
+</div>

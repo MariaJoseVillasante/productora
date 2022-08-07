@@ -1,0 +1,41 @@
+<%= form_with(model: concert) do |form| %>
+  <% if concert.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(concert.errors.count, "error") %> prohibited this concert from being saved:</h2>
+
+      <ul>
+        <% concert.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :fecha, style: "display: block", class: "form-label" %>
+    <%= form.datetime_field :fecha, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :asistentes, style: "display: block", class: "form-label" %>
+    <%= form.number_field :asistentes, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :lugar, style: "display: block", class: "form-label" %>
+    <%= form.text_field :lugar, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :duracion, style: "display: block", class: "form-label" %>
+    <%= form.number_field :duracion, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :group_id, style: "display: block", class: "form-label" %>
+    <%= form.select(:group_id, options_from_collection_for_select(@groups, :id, :nombre), { }, { class: "form-select" }) %>  
+  </div>
+  <div class="d-flex align-center">
+    <%= form.submit nil, class: "btn btn-secondary mt-5"  %>
+  </div>
+<% end %>

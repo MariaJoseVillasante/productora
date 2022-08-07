@@ -1,0 +1,8 @@
+<%= search_form_for @q, class:"d-flex mb-3" do |f| %>  
+<%= f.select :tipo_grupo_eq, options_for_select(Group.tipo_grupos, @q.tipo_grupo), {include_blank: "Ver todos"}, {class:"form-control me-2"} %>
+<%# <%= form.select(:tipo_grupo, Group.tipo_grupos.keys.map { |b| [b.humanize, b] }, {}, {class:"form-select"}) %> 
+<%# # Search if the name field contains... %>
+  <%# <%= f.label :nombre_cont %>
+  <%# <%= f.search_field :nombre_cont %>
+<%= f.submit "Filter", class:"btn btn-outline-secondary" %>
+<% end %>

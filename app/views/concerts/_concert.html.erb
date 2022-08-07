@@ -1,0 +1,19 @@
+<div id="<%= dom_id concert %>">
+    <h1 class="d-flex justify-content-evenly text-light">Concierto</h1>
+    <div class="container mt-5 d-flex justify-content-evenly">
+        <div class="card tabla" style="width: 25rem;"> 
+            <div class="card-body">
+            <h5 class="card-title">Fecha: <%= concert.fecha %></h5>
+            <p class="card-text">Asistentes: <%= concert.asistentes %></p>
+            <p class="card-text">Lugar: <%= concert.lugar %></p>
+            <p class="card-text">Duracion: <%= concert.duracion %></p>
+            <p class="card-text">Group: <%=  concert.group_id%></p>
+            <div class="d-flex justify-content-evenly">
+                <%= link_to 'Lista', concerts_path, class:"btn btn-secondary" %>
+                <%= link_to "Editar", edit_concert_path(concert), class:"btn btn-secondary"%>
+                <%= link_to 'Nuevo', new_concert_path, class:"btn btn-secondary" %>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

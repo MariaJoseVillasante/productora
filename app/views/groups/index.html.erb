@@ -1,0 +1,45 @@
+<p style="color: green"><%= notice %></p>
+<h1 class="mb-5 d-flex justify-content-center text-light">Groups</h1>
+<%# <%= paginate @groups %> 
+<div class="col-md-6 offset-md-6">
+    <%= render 'groups/filter_form' %>  
+</div> 
+
+<table class="table table-bordered tabla">
+    <thead>
+        <tr>
+            <th><%= sort_link(@q, :Nombre, 'Nombre', default_order: :desc) %>Nombre</th>
+            
+            <th>Cantidad de Conciertos</th>
+            <th>Cantidad de asistentes este mes</th>
+            <th>Asistentes por concierto</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @groups.each do |group| %>
+            <tr>
+                <td><%= group.nombre %></td>
+                <td><%= group.concerts.count %></td>
+                <td><%= group.conciertos_este_mes %></td>
+                <td><% group.concerts.each do |concert| %>
+        <li>En <%= concert.lugar %>, hubo: <%= concert.asistentes %> Asistentes</li>
+      <% end %></td>
+                <td class="d-flex justify-content-evenly">
+                <%= link_to group, class:"btn btn-secondary" do%>Ver <%end%>
+                    <%= link_to "Editar", edit_group_path(group), class:"btn btn-secondary"%>
+                    <%= button_to "Eliminar", group, method: :delete, data: {confirm: "Seguro?"}, class:"btn btn-danger" %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<div class="d-flex justify-content-end">  
+<%= paginate @groups %>
+<%# <%= paginate @groups, theme: 'bootstrap-5' %>
+</div>
+
+<%# <div id="groups"> %>
+<%= link_to "New group", new_group_path, class: "btn btn-secondary"  %>
+<br>
+<%= link_to 'Volver', :back, class:"" %>
