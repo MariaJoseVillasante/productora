@@ -1,0 +1,30 @@
+<%= form_with(model: crew) do |form| %>
+  <% if crew.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(crew.errors.count, "error") %> prohibited this crew from being saved:</h2>
+
+      <ul>
+        <% crew.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nombre, style: "display: block" %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div>
+    <%= form.label :mail, style: "display: block" %>
+    <%= form.text_field :mail %>
+  </div>
+  <div>
+    <%= form.label :group_id, style: "display: block", class: "form-label" %>
+    <%= form.select(:group_id, options_from_collection_for_select(@groups, :id, :nombre), { }, { class: "form-select" }) %>  
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

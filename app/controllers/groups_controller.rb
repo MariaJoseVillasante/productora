@@ -5,9 +5,11 @@ class GroupsController < ApplicationController
   def index
     # solo gema ransack
     #@groups = Group.all.page(params[:page])
+    #####@posts = Post.includes(:commment)
     # gema ransack + buscador
+    @groups = Group.eager_load(:crew, :concert)
     @q = Group.ransack(params[:q])
-    @groups = @q.result(distinct: true).order(id: :desc).page(params[:page])
+    @groups = @q.result(distinct: true).all.order(id: :desc).page(params[:page])
     #normal:
     #@groups = Group.all.order(nombre: :asc)
   end

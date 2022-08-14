@@ -28,7 +28,6 @@
 
   <div>
     <%= form.label :tipo_grupo, style: "display: block", class: "form-label text-light"  %>
-    <%# <%= form.number_field :tipo_grupo %> 
     <%= form.select(:tipo_grupo, Group.tipo_grupos.keys.map { |g| [g.humanize, g] }, {}, {class:"form-select"}) %>
   </div>
 

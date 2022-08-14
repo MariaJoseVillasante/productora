@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :crews
+  #devise_for :users
+  # devise_for :users, :controllers => { registrations: 'users/registrations' }
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   get 'inicio/index'
   resources :concerts
   resources :groups
@@ -6,4 +12,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "inicio#index"
+  
 end

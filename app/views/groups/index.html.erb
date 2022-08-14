@@ -8,34 +8,51 @@
 <table class="table table-bordered tabla">
     <thead>
         <tr>
-            <th><%= sort_link(@q, :Nombre, 'Nombre', default_order: :desc) %>Nombre</th>
-            
-            <th>Cantidad de Conciertos</th>
-            <th>Cantidad de asistentes este mes</th>
-            <th>Asistentes por concierto</th>
+            <%# <th><%= sort_link(@q, :Nombre, 'Nombre', default_order: :desc) %>
+            <%# Nombre</th> %> 
+            <th>#</th>            
+            <th>Nombre</th>            
+            <th>Conciertos</th>
+            <th>Integrantes</th>
+            <th>Debut</th>
+            <th># este mes</th>
+            <th>Grupo</th>
+            <th># por concierto</th>
+            <th>Integrantes</th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
         <% @groups.each do |group| %>
             <tr>
+                <td><%= group.id %></td>
                 <td><%= group.nombre %></td>
                 <td><%= group.concerts.count %></td>
+                <td><%= group.integrantes %></td>
+                <td><%= group.fecha_debut %></td>
                 <td><%= group.conciertos_este_mes %></td>
+                <td><%= group.tipo_grupo %></td>
                 <td><% group.concerts.each do |concert| %>
-        <li>En <%= concert.lugar %>, hubo: <%= concert.asistentes %> Asistentes</li>
-      <% end %></td>
+                    <li>En <%= concert.lugar %>, hubo: <%= concert.asistentes %> Asistentes</li>
+                        <% end %></td>
+                <td><% group.crews.each do |integrantes| %>
+                    <li><%= integrantes.nombre %></li>
+                        <% end %></td>
+                
                 <td class="d-flex justify-content-evenly">
                 <%= link_to group, class:"btn btn-secondary" do%>Ver <%end%>
                     <%= link_to "Editar", edit_group_path(group), class:"btn btn-secondary"%>
-                    <%= button_to "Eliminar", group, method: :delete, data: {confirm: "Seguro?"}, class:"btn btn-danger" %>
+                    <%= link_to "Eliminar", group, class:"btn btn-danger", data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                    } %>
                 </td>
             </tr>
         <% end %>
     </tbody>
 </table>
-<div class="d-flex justify-content-end">  
-<%= paginate @groups %>
+<div class="d-flex justify-content-end text-light">  
+<%= paginate @groups, class:""%>
 <%# <%= paginate @groups, theme: 'bootstrap-5' %>
 </div>
 

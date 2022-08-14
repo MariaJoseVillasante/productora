@@ -30,7 +30,11 @@
                     <%= link_to concert, class:"btn btn-secondary" do%>Ver <%end%>
                     <%# <%= link_to "Ver", concert_path(concert), class:"btn btn-secondary"%> 
                     <%= link_to "Editar", edit_concert_path(concert), class:"btn btn-secondary"%>
-                    <%= button_to "Eliminar", concert, method: :delete, data: {confirm: "Seguro?"}, class:"btn btn-danger" %>
+                    <%= link_to "Eliminar", concerts_path(@concert), class:"btn btn-danger", data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                    } %>
+
                 </td>
             </tr>
         <% end %>

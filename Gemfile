@@ -76,3 +76,4 @@ gem 'kaminari'
 gem 'bootstrap5-kaminari-views'
 gem 'ransack'
 # gem 'ransack', github: 'activerecord-hackery/ransack'
+gem "devise", "~> 4.8"
